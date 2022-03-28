@@ -1,27 +1,28 @@
 import React from 'react';
-//import { convertCategorySnapshotToMap, firestore } from '../../firebase/firebase.utils';
-//import WithSpinner from '../../components/with-spinner/with-spinner.component';
+import { convertCategorySnapshotToMap, firestore } from '../../firebase/firebase.utils';
+import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
-//import Shop from '../shop/shop.component';
-//import Checkout from '../../components/checkout/checkout.component';
+import ProductView from '../../components/product-view/product-view.component';
 
-//import { convertCollectionSnapshotToMap } from '../../firebase/firebase.utils';
-//import { updateCollections } from '../../redux/shop/shop.actions';
-//import { connect } from 'react-redux';
+import { convertCollectionSnapshotToMap } from '../../firebase/firebase.utils';
+import { updateCollections } from '../../redux/shop/shop.actions';
+import { connect } from 'react-redux';
 
 import { 
     HomePageContainer 
 } from './homepage.styles';
-//import { updateCategories } from '../../redux/category/category.actions';
-//import { createStructuredSelector } from 'reselect';
-//import { selectCartTotal } from '../../redux/cart/cart.selectors';
+import { updateCategories } from '../../redux/category/category.actions';
+import { createStructuredSelector } from 'reselect';
+import { selectCartTotal } from '../../redux/cart/cart.selectors';
 
-//const ShopWithSpinner = WithSpinner(Shop);
-//const CheckoutWithSpinner = WithSpinner(Checkout);
+import TestTablePage from '../table-test/table-test.component';
+
+const ProductViewWithSpinner = WithSpinner(ProductView);
+
 
 class Homepage extends React.Component {
 
-/*    state = {
+    state = {
         loading: true,
         collectionsUpdated: false,
         categoriesUpdated: false
@@ -74,27 +75,13 @@ class Homepage extends React.Component {
 
         return(
         <HomePageContainer>
-            
-            <ShopWithSpinner isLoading={loading}/>
-            {
-                total > 0 ? (
-                    <CheckoutWithSpinner isLoading={loading}/>
-                ):null
-            }
+            <ProductViewWithSpinner/>
         </HomePageContainer>
-        )
-    }
-        */
-    render(){
-        return(
-            <HomePageContainer>
-                <h1>Home Page</h1>
-            </HomePageContainer>
         )
     }
 }
 
-/*const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
     updateCollections: collectionsMap => dispatch(updateCollections(collectionsMap)),
     updateCategories: categoriesMap => dispatch(updateCategories(categoriesMap))
 });
@@ -104,6 +91,3 @@ const mapStateToProps = createStructuredSelector({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
-*/
-
-export default Homepage;
