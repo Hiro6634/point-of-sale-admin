@@ -2,7 +2,6 @@ import firebase  from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
-
 const config = {
     apiKey: "AIzaSyB_vEdLMXk3Fh649VwaLvg7iWCbwx0Jx08",
     authDomain: "ajbpos.firebaseapp.com",
@@ -56,21 +55,49 @@ const config = {
     }
 }
 
-  export const convertCollectionSnapshotToMap = collections => {
-    const transformedCollection = collections.docs.map(doc=>{
-        const {name, category, price, enable} = doc.data();
+export const createProductfileDocument = async (product, additionalData) => {
+    if( !product) return;
+
+        const productRef = firestore.doc(`products/${product.uid}`);
+        const snapShot = await productRef.get();       
+        const printer = '';
+
+       if(!snapShot.exists){
+/*           const {displayName, email} = userAuth;
+           const createAt = new Date();
+
+           try {
+               await userRef.set({
+                   displayName,
+                   email,
+                   printer,
+                   createAt,
+                   ...additionalData
+               })
+           } catch(error){
+               console.log('error creating user ', error.message);
+           }*/
+       }
+
+       return productRef;
+  }
+
+export const convertProductsSnapshotToMap = products => {
+    const transformedProducts = products.docs.map(doc=>{
+        const {name, category, price, enable, stock} = doc.data();
 
         return {
             id: doc.id,
             name,
             price,
             category,
-            enable
+            enable,
+            stock
         };
     });
 
-    return transformedCollection.reduce((accumulator, collection)=>{
-        accumulator[collection.name.toLowerCase()] = collection;
+    return transformedProducts.reduce((accumulator, product)=>{
+        accumulator[product.name.toLowerCase()] = product;
         return accumulator;
     }, {});
   }

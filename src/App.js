@@ -10,7 +10,6 @@ import { setCurrentUser } from './redux/user/user.actions';
 
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
-import TestTablePage from './pages/table-test/table-test.component';
 
 import './App.css';
 
@@ -56,7 +55,6 @@ class App extends React.Component {
                 )
               }
             />
-          <Route path='/config' component={TestTablePage}/>
           <Route 
             exact
             path = '/SignIn' 

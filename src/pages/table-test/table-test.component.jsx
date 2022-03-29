@@ -27,7 +27,7 @@ const getDataFromCollection = collections => {
 
 const doSomethigToRow = (row)  => {
   console.log("Row Selected: ", row['producto']);
-  
+
 }
 
 const TestTablePage = ({collections}) => {
@@ -36,7 +36,6 @@ const TestTablePage = ({collections}) => {
     const columns = useMemo(
         () => [
           {
-            // Second group - Details
             Header: "Categoria",
             accessor: "categoria"
           },
