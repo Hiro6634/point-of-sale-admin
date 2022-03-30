@@ -55,32 +55,15 @@ const config = {
     }
 }
 
-export const createProductfileDocument = async (product, additionalData) => {
-    if( !product) return;
-
-        const productRef = firestore.doc(`products/${product.uid}`);
-        const snapShot = await productRef.get();       
-        const printer = '';
-
-       if(!snapShot.exists){
-/*           const {displayName, email} = userAuth;
-           const createAt = new Date();
-
-           try {
-               await userRef.set({
-                   displayName,
-                   email,
-                   printer,
-                   createAt,
-                   ...additionalData
-               })
-           } catch(error){
-               console.log('error creating user ', error.message);
-           }*/
-       }
-
-       return productRef;
-  }
+export const addOrUpdateProduct = async (product) => {
+    
+    try{
+        const res = await firestore.collection('collections').add( product );
+    }
+    catch(error){
+        console.error(error);
+    }
+}
 
 export const convertProductsSnapshotToMap = products => {
     const transformedProducts = products.docs.map(doc=>{

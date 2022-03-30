@@ -5,3 +5,9 @@ export const updateProducts = (productsMap) => ({
     payload: productsMap
 });
 
+
+export const toggleProduct = (productName) => ({
+    type: ShopActionTypes.TOGGLE_PRODUCT,
+    payload: productName
+});
+

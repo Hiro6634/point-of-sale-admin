@@ -30,12 +30,12 @@ class Homepage extends React.Component {
 
     componentDidMount(){
         const {updateProducts, updateCategories} = this.props;
-        const collectionRef = firestore.collection('collections');
+        const productsRef = firestore.collection('collections');
         const categoriesRef = firestore.collection('categories');
 
+        productsRef.onSnapshot( async snapshot =>{
+            const productsMap = await convertProductsSnapshotToMap(snapshot);
 
-        collectionRef.get().then(snapshot => {
-            const productsMap = convertProductsSnapshotToMap(snapshot);
             updateProducts(productsMap);
             this.setState({
                 ...this.state,
