@@ -1,0 +1,7 @@
+const ProductActionTypes = {
+    TOGGLE_PRODUCT_EDIT_HIDDEN: 'TOGGLE_PRODUCT_EDIT_HIDDEN',
+    UPDATE_PRODUCT: 'UPDATE_PRODUCT',
+    CLEAR_PRODUCT: 'CLEAR_PRODUCT'
+};
+
+export default ProductActionTypes;

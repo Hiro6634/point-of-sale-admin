@@ -1,8 +1,7 @@
-import { toggleProduct } from './shop.utils';
+import { deleteProduct, toggleProductState } from './shop.utils';
 import ShopActionTypes from './shop.types';
 const INITIAL_STATE = {
-    collections: null,
-    products: null
+    collections: null
 };
 
 const shopReducer = ( state=INITIAL_STATE, action) => {
@@ -12,16 +11,16 @@ const shopReducer = ( state=INITIAL_STATE, action) => {
                 ...state,
                 collections: action.payload
             };
-        case ShopActionTypes.UPDATE_PRODUCT:
-            return {
-                ...state,
-                product: action.payload
-            };
         case ShopActionTypes.TOGGLE_PRODUCT:
             return{
                 ...state,
-                products:toggleProduct(state.collections, action.payload)
+                collections:toggleProductState(state.collections, action.payload)
             };
+        case ShopActionTypes.DELETE_PRODUCT:
+            return{
+                ...state,
+                collections:deleteProduct(state.collections, action.payload)
+            }
         default:
             return state;
     }

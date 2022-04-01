@@ -1,99 +1,54 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectShopCollectionsSortByCategory } from '../../redux/shop/shop.selectors';
-import Table from '../table/table.component';
 import CustomButton from '../custom-button/custom-button.component';
-import { toggleProduct } from '../../redux/shop/shop.actions';
 import { 
     ProductViewContainer,
     ProductTableContainer
  } from './product-view.styles';
+import ProductViewLine from '../product-view-line/product-view-line.component';
+import { selectProductEditHidden } from '../../redux/product/product.selectors';
+import AddOrUpdateProductComponent from '../add-or-update-product/add-or-update-product.component';
+import { clearProduct, toggleProductEditHidden } from '../../redux/product/product.actions';
 
- const toggleProductAvailability = (toggleProduct, row)  => {
-    console.log("Row Selected: ", row);
-    toggleProduct(row['producto']);
-    /*const product = {
-        category: 'NIHONRYORI',
-        name:'KATSUDON',
-        price: 300,
-        enable: true
-    };
-
-    addOrUpdateProduct(product);
-    console.log('DONE!');*/
-  }
-  
-const getData = collections => {
-    console.log("Produc ts:", collections);
-    const transformedCollection = collections.map( item => {
-        const enable = item.enable ? "V": "F";
-        return {
-            categoria: item.category,
-            producto: item.name,
-            precio: item.price,
-            stock: 10,
-            enable: enable
-        };
-    });
-
-    return transformedCollection.reduce((accumulator, collection) => {
-        accumulator.push(collection);
-        return accumulator;
-    },[])
-};
-
-const ProductView = ({shopCollection, toggleProduct}) => {
-    const data = useMemo(()=> getData(shopCollection));
-
-    const columns = useMemo(
-        ()=>[
-            {
-                Header: "Categoria",
-                accessor: "categoria"
-              },
-              {
-                Header: "Producto",
-                accessor: "producto"
-              },
-              {
-                Header: "Precio",
-                accessor: "precio"
-              },
-              {
-                Header: "Stock",
-                accessor: "stock"
-              },
-              {
-                Header: "En Venta",
-                accessor: "enable",
-                Cell: ({value, column, row}) => { return(<div onClick={()=>toggleProductAvailability(toggleProduct, row.original)}>{value}</div>)}
-              }
-            ],
-            []
-    );
-
+   const ProductView = ({shopCollection, productEditHidden, toggleProductEditHidden, clearProduct}) => {
     return(
     <ProductViewContainer>
-        <h2>Product View</h2>
+        <h2>Productos</h2>
         <ProductTableContainer>
-            <Table columns={columns} data={data}/>
+        {
+            shopCollection.map( product => (
+                <ProductViewLine key={product.id} product={product}/>
+            ))
+        }
         </ProductTableContainer>
         <div>
-            <CustomButton type='button'  >Agregar Producto</CustomButton>
+            <CustomButton 
+                type='button' 
+                onClick={()=>{
+                    clearProduct();
+                    toggleProductEditHidden();   
+                }}
+            >Agregar</CustomButton>
         </div>
+        {
+            !productEditHidden ? <AddOrUpdateProductComponent/> : null
+        }
     </ProductViewContainer>
     );
 }
 
 const mapDispatchToProps = dispatch => ({
-    toggleProduct: productName => dispatch(toggleProduct(productName))
+    toggleProductEditHidden: () => dispatch(toggleProductEditHidden()),
+    clearProduct: () => dispatch(clearProduct())
 });
 
 const mapStateToProps = createStructuredSelector({
-    shopCollection: selectShopCollectionsSortByCategory
+    shopCollection: selectShopCollectionsSortByCategory,
+    productEditHidden: selectProductEditHidden
 });
 export default connect(
-    mapStateToProps, 
-    mapDispatchToProps)
-(ProductView);
+    mapStateToProps,
+    mapDispatchToProps
+)(ProductView);

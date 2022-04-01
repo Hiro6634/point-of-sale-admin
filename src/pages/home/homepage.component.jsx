@@ -12,8 +12,6 @@ import {
     HomePageContainer 
 } from './homepage.styles';
 import { updateCategories } from '../../redux/category/category.actions';
-import { createStructuredSelector } from 'reselect';
-import { selectCartTotal } from '../../redux/cart/cart.selectors';
 
 const ProductViewWithSpinner = WithSpinner(ProductView);
 
@@ -68,9 +66,6 @@ class Homepage extends React.Component {
         });
     }
     render(){
-        const { loading } = this.state;
-        const {total} = this.props;
-
         return(
         <HomePageContainer>
             <ProductViewWithSpinner/>
@@ -84,8 +79,4 @@ const mapDispatchToProps = dispatch => ({
     updateCategories: categoriesMap => dispatch(updateCategories(categoriesMap))
 });
 
-const mapStateToProps = createStructuredSelector({
-    total: selectCartTotal
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
+export default connect(null, mapDispatchToProps)(Homepage);

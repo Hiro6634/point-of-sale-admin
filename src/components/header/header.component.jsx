@@ -25,6 +25,12 @@ const Header = ({currentUser}) => {
                 <OptionLink to='/help'>
                     AYUDA
                 </OptionLink>
+                <OptionLink to='/products'>
+                    PRODUCTOS
+                </OptionLink>
+                <OptionLink to='/stock'>
+                    STOCK
+                </OptionLink>
                 <OptionLink to='/config'>
                     CONF
                 </OptionLink>

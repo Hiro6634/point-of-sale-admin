@@ -58,7 +58,25 @@ const config = {
 export const addOrUpdateProduct = async (product) => {
     
     try{
-        const res = await firestore.collection('collections').add( product );
+        if( product.id != null){
+            const docRef = firestore.collection('collections').doc(product.id);
+            const snapshot = await docRef.get();
+            if( snapshot.exists ){ //Update
+                docRef.set({
+                    category: product.category,
+                    name: product.name,
+                    price: product.price,
+                    enable: product.enable
+                });
+                return;
+            } 
+            else{
+                product.id = null;
+            }
+
+        }
+        //Insert
+        await firestore.collection('collections').add( product );
     }
     catch(error){
         console.error(error);
