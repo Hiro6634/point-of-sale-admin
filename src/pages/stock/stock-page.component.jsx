@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectStockItems } from '../../redux/stock/stock.selectors';
+import { selectShopCollectionsSortByCategory} from '../../redux/shop/shop.selectors';
 import StockLineRow from '../../components/stock-line/stock-line-row/stock-line-row.component';
 import StockLineHeader from '../../components/stock-line/stock-line-header/stock-line-header.component';
 import { 
@@ -14,7 +14,7 @@ const  StockPage = ({stockItems}) =>{
     return(
     <StockContainer>
         <h2>STOCK</h2>
-        <StockLineHeader/>
+        {/* <StockLineHeader/> */}
         <StockTableContainer>
         {
             stockItems.map(s => {
@@ -27,7 +27,7 @@ const  StockPage = ({stockItems}) =>{
 )}
 
 const mapStateToProps = createStructuredSelector({
-    stockItems: selectStockItems
+    stockItems: selectShopCollectionsSortByCategory
 });
 
 export default connect(mapStateToProps)(StockPage);

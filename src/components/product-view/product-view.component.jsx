@@ -15,7 +15,7 @@ import { clearProduct, toggleProductEditHidden } from '../../redux/product/produ
    const ProductView = ({shopCollection, productEditHidden, toggleProductEditHidden, clearProduct}) => {
     return(
     <ProductViewContainer>
-        <h2>Productos</h2>
+        <h2>PRODUCTOS</h2>
         <ProductTableContainer>
         {
             shopCollection.map( product => (

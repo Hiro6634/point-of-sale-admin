@@ -1,5 +1,4 @@
 import { addOrUpdateProduct, removeProduct } from '../../firebase/firebase.utils';
-import { selectShopCollections } from './shop.selectors';
 
 export const addProduct = (products, productToAdd) => {
     const existingProducts = products.find(
