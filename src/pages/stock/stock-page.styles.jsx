@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const StockContainer = styled.div`
+    width:100%
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 20px;
 `;
 
 export const StockTableContainer = styled.div`
-    margin: auto;
-    width: 60%;
-    padding: 10px;
+    width: 700px;
 `;

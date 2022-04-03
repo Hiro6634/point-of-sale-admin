@@ -1,4 +1,5 @@
-import { addOrUpdateProduct } from '../../firebase/firebase.utils';
+import { addOrUpdateProduct, removeProduct } from '../../firebase/firebase.utils';
+import { selectShopCollections } from './shop.selectors';
 
 export const addProduct = (products, productToAdd) => {
     const existingProducts = products.find(
@@ -17,5 +18,6 @@ export const toggleProductState = (products, product) => {
 }
 
 export const deleteProduct = (products, productToDelete) =>{
-    return {...products};    
+    removeProduct(productToDelete);     
+    return {...products };    
 } 

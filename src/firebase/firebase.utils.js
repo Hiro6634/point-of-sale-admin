@@ -43,49 +43,58 @@ const config = {
        return userRef;
   }
 
-  export const printTicket = async (printer, ticket) => {
-    const ticketId = new Date().getTime();
-    const queueRef = firestore.doc(`printers/${printer}/queue/${ticketId}`);
+  export const removeProduct = async product =>{
+    console.log("DELETE:", product.id);
     try{
-        await queueRef.set(
-            ticket
-        );
-    } catch(error){
-        console.error(error);     
-    }
+        const docRef = firestore.collection('products').doc(product.id);
+        const snapshot = await docRef.get();
+        if( snapshot.exists){
+            docRef.delete();
+        }
+    }  catch(error){
+        console.error(error);
+    }  
 }
 
 export const addOrUpdateProduct = async (product) => {
-    
+    console.log("PRODUCT", product );
     try{
-        if( product.id != null){
-            const docRef = firestore.collection('collections').doc(product.id);
-            const snapshot = await docRef.get();
-            if( snapshot.exists ){ //Update
-                docRef.set({
-                    category: product.category,
-                    name: product.name,
-                    price: product.price,
-                    enable: product.enable
-                });
-                return;
-            } 
-            else{
-                product.id = null;
-            }
-
+        const docRef = firestore.collection('products').doc(product.name.toLowerCase());
+        const snapshot = await docRef.get();
+        if(snapshot.exists){
+            await docRef.update(product);
         }
-        //Insert
-        await firestore.collection('collections').add( product );
+        else{
+            await docRef.set(product);
+        }
     }
     catch(error){
         console.error(error);
     }
 }
 
+export const convertStockSnapshotToMap = stock => {
+    const transformedStock = stock.docs.map(doc=>{
+        const {stock, warning, autostop, autostop_enable, unit_of_sale} = doc.data();
+        return{
+            id: doc.id,
+            stock: stock ? stock : 0,
+            warning: warning ? warning : 0,
+            autostop: autostop ? autostop : 0,
+            autostop_enable: autostop_enable ? autostop_enable : false,
+            unit_of_sale: unit_of_sale ? unit_of_sale : 1
+        };
+    });
+
+    return transformedStock.reduce((acc, product)=>{
+        acc.push(product);
+        return acc;
+    }, []);
+  }
+
 export const convertProductsSnapshotToMap = products => {
     const transformedProducts = products.docs.map(doc=>{
-        const {name, category, price, enable, stock} = doc.data();
+        const {name, category, price, enable, stock, warninglevel, stoplevel, enablestop} = doc.data();
 
         return {
             id: doc.id,
@@ -93,7 +102,10 @@ export const convertProductsSnapshotToMap = products => {
             price,
             category,
             enable,
-            stock
+            stock,
+            warninglevel,
+            stoplevel,
+            enablestop
         };
     });
 
@@ -118,6 +130,10 @@ export const convertProductsSnapshotToMap = products => {
         accumulator[category.name.toLowerCase()] = category;
         return accumulator;
     },{});
+  }
+
+  export const updateStock = stockItems => {
+
   }
 
   export const auth = firebase.auth(app);

@@ -1,27 +1,33 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectStockItems } from '../../redux/stock/stock.selectors';
+import StockLineRow from '../../components/stock-line/stock-line-row/stock-line-row.component';
+import StockLineHeader from '../../components/stock-line/stock-line-header/stock-line-header.component';
 import { 
     StockContainer,
     StockTableContainer
 } from './stock-page.styles';
 
-class StockPage extends React.Component {
+const  StockPage = ({stockItems}) =>{
+    console.log("STOCK_ITEMS:", stockItems);
+    return(
+    <StockContainer>
+        <h2>STOCK</h2>
+        <StockLineHeader/>
+        <StockTableContainer>
+        {
+            stockItems.map(s => {
+                console.log(s)
+                return(<StockLineRow key={s.id} stockItem={s}/>)
+            })
+        }
+        </StockTableContainer>
+    </StockContainer>
+)}
 
-    state = {
-        loading: true
-    }
+const mapStateToProps = createStructuredSelector({
+    stockItems: selectStockItems
+});
 
-    unsubscribeFromSnapshot = null;
-    render(){
-        return(
-            <StockContainer>
-                <h2>STOCK</h2>
-                <StockTableContainer>
-
-                </StockTableContainer>
-            </StockContainer>
-        );
-    }
-}
-
-export default StockPage;
+export default connect(mapStateToProps)(StockPage);

@@ -39,21 +39,26 @@ class AddOrUpdateProduct extends React.Component {
     }
 
     updateProducts = async () => {
-        const {id, category, name, price, enable} = this.state;
+        const {id, category, name, price, enable, stock, warninglevel, stoplevel, enablestop } = this.state;
 
         const product = { 
             id: id,
             category: category, 
             name: name, 
             price: price, 
-            enable: enable
+            enable: enable,
+            stock: stock,
+            warninglevel: warninglevel,
+            stoplevel: stoplevel,
+            enablestop: enablestop
         };
+        console.log("ADD", product)
         await addOrUpdateProduct(product);
     }
 
     render(){
         const {toggleProductEditHidden} = this.props;
-        const {category, name, price, enable} = this.state;
+        const { category, name, price, enable, stock, warninglevel, stoplevel, enablestop } = this.state;
 
         return(
             <AddProductContainer>
@@ -84,11 +89,58 @@ class AddOrUpdateProduct extends React.Component {
                         handleChange={this.handleChange}
                         required
                     />
+
+                    <FormInput 
+                        name="stock"
+                        label="Stock"
+                        type="number"
+                        value={stock?stock:0}
+                        handleChange={this.handleChange}
+                        required
+                    />
+{/*                    <FormInput 
+                        name="stock"
+                        label="Stock"
+                        type="number"
+                        value={stock}
+                        handleChange={this.handleChange}
+                        required
+                    />
+
+                    <FormInput 
+                        name="wraninglevel"
+                        label="Warning"
+                        type="number"
+                        value={warninglevel}
+                        handleChange={this.handleChange}
+                    />
+
+                    <FormInput 
+                        name="stoplevel"
+                        label="Stop"
+                        type="number"
+                        value={stoplevel}
+                        handleChange={this.handleChange}
+                    />
+
                     <div>
+                        <label>STOP</label>
+                        <input 
+                        type="checkbox" 
+                        name="enablestop" 
+                        defaultChecked={enablestop} 
+                        onClick={()=>{
+                            this.setState({
+                                ...this.state,
+                                enablestop: !enablestop
+                            })
+                        }}/>
+                    </div>
+ */}                    <div>
                         <label>HABILITADO</label>
                         <input 
                         type="checkbox" 
-                        name="price" 
+                        name="enable" 
                         defaultChecked={enable} 
                         onClick={()=>{
                             this.setState({
