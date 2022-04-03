@@ -16,11 +16,15 @@ class AddOrUpdateProduct extends React.Component {
         super(props);
         
         const {product} = this.props;
-        const id = product ? product.id : null;
-        const category = product ? product.category : '';
-        const name = product ? product.name : '';
-        const price = product ? product.price : 0;
-        const enable = product ? product.enable : false;
+        const id = (product && product.id) ? product.id : null;
+        const category = (product && product.category) ? product.category : '';
+        const name = (product && product.name) ? product.name : '';
+        const price = (product && product.price) ? product.price : 0;
+        const enable = (product && product.enable) ? product.enable : false;
+        const stock = (product && product.stock) ? product.stock : 0;
+        const warninglevel = (product && product.warninglevel) ? product.warninglevel : 0;
+        const stoplevel = (product && product.stoplevel) ? product.stoplevel : 0;
+        const enablestop = (product && product.enablestop) ? product.enablestop : false;
 
         this.state = {
             id: id,
@@ -28,6 +32,10 @@ class AddOrUpdateProduct extends React.Component {
             name: name,
             price: price,
             enable: enable,
+            stock: stock,
+            warninglevel: warninglevel,
+            stoplevel: stoplevel,
+            enablestop: enablestop,
             disabled: false
         };
     }
@@ -96,20 +104,11 @@ class AddOrUpdateProduct extends React.Component {
                         type="number"
                         value={stock?stock:0}
                         handleChange={this.handleChange}
-                        required
-                    />
-{/*                    <FormInput 
-                        name="stock"
-                        label="Stock"
-                        type="number"
-                        value={stock}
-                        handleChange={this.handleChange}
-                        required
                     />
 
                     <FormInput 
                         name="wraninglevel"
-                        label="Warning"
+                        label="Stock Minimo"
                         type="number"
                         value={warninglevel}
                         handleChange={this.handleChange}
@@ -117,14 +116,14 @@ class AddOrUpdateProduct extends React.Component {
 
                     <FormInput 
                         name="stoplevel"
-                        label="Stop"
+                        label="Stock Critico"
                         type="number"
                         value={stoplevel}
                         handleChange={this.handleChange}
                     />
 
                     <div>
-                        <label>STOP</label>
+                        <label>DETENCION AUTOMATICA</label>
                         <input 
                         type="checkbox" 
                         name="enablestop" 
@@ -136,7 +135,7 @@ class AddOrUpdateProduct extends React.Component {
                             })
                         }}/>
                     </div>
- */}                    <div>
+                    <div>
                         <label>HABILITADO</label>
                         <input 
                         type="checkbox" 
