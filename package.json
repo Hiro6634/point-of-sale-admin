@@ -2,11 +2,13 @@
   "name": "point-of-sale-admin",
   "version": "0.1.0",
   "private": true,
+  "hmepage:": "https://Hiro6634.github.io/point-of-sale-admin",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.6.9",
+    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -21,11 +23,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start7500": "set port=7500 & react-scripts start",
+    "startx": "set port=7500 & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"  },
   "eslintConfig": {
     "extends": [
       "react-app",
