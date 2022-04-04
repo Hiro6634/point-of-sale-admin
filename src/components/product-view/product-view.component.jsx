@@ -5,7 +5,13 @@ import { selectShopCollectionsSortByCategory } from '../../redux/shop/shop.selec
 import CustomButton from '../custom-button/custom-button.component';
 import { 
     ProductViewContainer,
-    ProductTableContainer
+    ProductTableContainer,
+    ProductHdrTableContainer,
+    CategoryHdrContainer,
+    NameHdrContainer,
+    PriceHdrContainer,
+    EnableHdrContainer,
+    ControlsHdrContainer
  } from './product-view.styles';
 import ProductViewLine from '../product-view-line/product-view-line.component';
 import { selectProductEditHidden } from '../../redux/product/product.selectors';
@@ -16,6 +22,13 @@ import { clearProduct, toggleProductEditHidden } from '../../redux/product/produ
     return(
     <ProductViewContainer>
         <h2>PRODUCTOS</h2>
+        <ProductHdrTableContainer>
+            <CategoryHdrContainer>Categoria</CategoryHdrContainer>
+            <NameHdrContainer>Producto</NameHdrContainer>
+            <PriceHdrContainer>Precio</PriceHdrContainer>
+            <EnableHdrContainer>Habilitado</EnableHdrContainer>
+            <ControlsHdrContainer>Editar/Borrar</ControlsHdrContainer>
+        </ProductHdrTableContainer>
         <ProductTableContainer>
         {
             shopCollection.map( product => (

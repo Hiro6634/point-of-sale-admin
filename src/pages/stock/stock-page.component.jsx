@@ -15,6 +15,7 @@ const  StockPage = ({stockItems}) =>{
     <StockContainer>
         <h2>STOCK</h2>
         {/* <StockLineHeader/> */}
+        
         <StockTableContainer>
         {
             stockItems.map(s => {
