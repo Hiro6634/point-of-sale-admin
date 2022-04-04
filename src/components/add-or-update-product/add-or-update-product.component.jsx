@@ -42,7 +42,7 @@ class AddOrUpdateProduct extends React.Component {
 
     handleChange = event => {
         const { value, name } = event.target;
-
+        console.log("[" + name + "]=" + value);
         this.setState({ [name]: value});
     }
 
@@ -102,12 +102,12 @@ class AddOrUpdateProduct extends React.Component {
                         name="stock"
                         label="Stock"
                         type="number"
-                        value={stock?stock:0}
+                        value={stock}
                         handleChange={this.handleChange}
                     />
 
                     <FormInput 
-                        name="wraninglevel"
+                        name="warninglevel"
                         label="Stock Minimo"
                         type="number"
                         value={warninglevel}
