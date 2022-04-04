@@ -22,13 +22,18 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node app.js",
+    "startnpm": "react-scripts start",
     "startx": "set port=7500 & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"  },
+  "repository": {
+    "type":"git",
+    "url":""
+  },  
   "eslintConfig": {
     "extends": [
       "react-app",

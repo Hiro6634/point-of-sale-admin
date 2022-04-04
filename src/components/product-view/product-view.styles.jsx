@@ -2,11 +2,16 @@ import styled  from 'styled-components';
 
 export const ProductViewContainer = styled.div`
     width: 100%
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 20px;
+
 `;
 
 export const ProductTableContainer = styled.div`
     margin: auto;
-    width: 60%;
+    width: 700px;
     padding: 10px;
 `;
 
