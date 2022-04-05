@@ -11,7 +11,14 @@ export const toggleProduct = (product) => ({
     payload: product
 });
 
+export const toggleAutostopProduct = (product) => ({
+    type: ShopActionTypes.TOGGLE_AUTOSTOP_PRODUCT,
+    payload: product
+});
+
+
 export const deleteProduct = (product) => ({
     type: ShopActionTypes.DELETE_PRODUCT,
     payload: product
 });
+

@@ -3,54 +3,42 @@ import styled, {css} from 'styled-components';
 export const StockLineContainer = styled.div`
     width:100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
+    margin: auto;
 `;
 
 export const ProductContainer = styled.span`
-    width: 20%;
+    width: 25%;
     text-align: left;
-    ${'' /* ${getIsEnable} */}
+    border: 0px solid black;
 `;
 
 export const StockContainer = styled.span`
     width: 10%;
     text-align: right;
-`;
-
-export const WarningContainer = styled.span`
-    width: 10%;
-    text-align: right;
+    border: 0px solid black;
 `;
 
 export const AutostopContainer = styled.span`
-    width: 10%;
-    text-align: right;
-`;
-
-export const ProductHdrContainer = styled.span`
-    width: 20%;
-    text-align: center;
-`;
-
-export const StockHdrContainer = styled.span`
-    width: 10%;
-    text-align: center;
-`;
-
-export const WarningHdrContainer = styled.span`
-    width: 10%;
-    text-align: center;
-`;
-
-export const AutostopHdrContainer = styled.span`
     width: 15%;
     text-align: center;
+    border: 0px solid black;
+`;
+export const EnableContainer = styled.div`
+    display: flex;
+    width: 15%;
+    cursor: pointer;    
+    justify-content: space-around;
+    border: 0px solid black;
 `;
 
-export const EnableHdrContainer = styled.span`
-    width: 5%;
-    text-align: center;
+export const ControlsContainer = styled.div`
+    width:20%;
+    display: flex;
+    justify-content: space-around;
+
+    cursor: pointer;    
+    border: 0px solid black;
 `;
 
 const iconClickeableStyles = css`
@@ -69,6 +57,8 @@ const getIconStyles = props => {
 
 export const IconContainer = styled.span`
     width:20px;
+    height: 20px;
+    padding: 0px 20px;
     text-align: center;
 
     ${getIconStyles}

@@ -19,4 +19,10 @@ export const toggleProductState = (products, product) => {
 export const deleteProduct = (products, productToDelete) =>{
     removeProduct(productToDelete);     
     return {...products };    
-} 
+}
+
+export const toggleAutostopProductState = (products, product) => {
+    product.enablestop = !product.enablestop;
+    addOrUpdateProduct(product);
+    return { ...products };
+}
