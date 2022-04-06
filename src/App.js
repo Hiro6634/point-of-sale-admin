@@ -6,6 +6,7 @@ import Homepage from './pages/home/homepage.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-aign-up.component';
 import StockPage from './pages/stock/stock-page.component';
+import HelpPage from './pages/help/help.component';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
@@ -57,6 +58,7 @@ class App extends React.Component {
             />
           <Route path='/products' component={Homepage}/>
           <Route path='/stock' component={StockPage}/>
+          <Route path='/help' component={HelpPage}/>
           <Route 
             exact
             path = '/SignIn' 

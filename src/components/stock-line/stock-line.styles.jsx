@@ -1,5 +1,16 @@
 import styled, {css} from 'styled-components';
 
+const getIsEnable = props => {
+    if(props.disable){
+        return textDisbleStyle;
+    }
+}
+
+const textDisbleStyle = css`
+    text-decoration: line-through;
+`;
+
+
 export const StockLineContainer = styled.div`
     width:100%;
     display: flex;
@@ -11,18 +22,22 @@ export const ProductContainer = styled.span`
     width: 25%;
     text-align: left;
     border: 0px solid black;
+    text-transform: uppercase;
+    ${getIsEnable}
 `;
 
 export const StockContainer = styled.span`
     width: 10%;
     text-align: right;
     border: 0px solid black;
+    ${getIsEnable}
 `;
 
 export const AutostopContainer = styled.span`
     width: 15%;
     text-align: center;
     border: 0px solid black;
+    ${getIsEnable}
 `;
 export const EnableContainer = styled.div`
     display: flex;
@@ -30,6 +45,7 @@ export const EnableContainer = styled.div`
     cursor: pointer;    
     justify-content: space-around;
     border: 0px solid black;
+    ${getIsEnable}
 `;
 
 export const ControlsContainer = styled.div`
@@ -63,16 +79,5 @@ export const IconContainer = styled.span`
 
     ${getIconStyles}
 `;
-
-const textDisbleStyle = css`
-    text-decoration: line-through;
-`;
-
-const getIsEnable = props => {
-    if(props.disable){
-        return textDisbleStyle;
-    }
-}
-
 
 

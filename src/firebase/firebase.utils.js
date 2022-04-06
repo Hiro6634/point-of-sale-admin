@@ -2,6 +2,17 @@ import firebase  from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
+/*const config = {
+    apiKey: "AIzaSyB_vEdLMXk3Fh649VwaLvg7iWCbwx0Jx08",
+    authDomain: "ajbpos.firebaseapp.com",
+    databaseURL: "https://ajbpos-default-rtdb.firebaseio.com",
+    projectId: "ajbpos",
+    storageBucket: "ajbpos.appspot.com",
+    messagingSenderId: "955048515609",
+    appId: "1:955048515609:web:a1de2316f29d563b6f7288",
+    measurementId: "G-RV55F4V3C4"
+  };
+*/
 const config = {
     apiKey: "AIzaSyB_vEdLMXk3Fh649VwaLvg7iWCbwx0Jx08",
     authDomain: "ajbpos.firebaseapp.com",
@@ -12,8 +23,7 @@ const config = {
     measurementId: "G-F0RFSFCFP6"
   };
 
-
-  var app = firebase.initializeApp(config);
+var app = firebase.initializeApp(config);
   
 
   export const createUserProfileDocument = async (userAuth, additionalData) => {

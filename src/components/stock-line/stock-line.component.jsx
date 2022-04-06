@@ -32,10 +32,10 @@ const StockLine = ({
     toggleProduct,
     toggleAutostopProduct
 }) => {
-    console.log("STOCKITEM",stockItem);
+    console.log("STOCKITEM enable:",stockItem.enable);
     return(
     <StockLineContainer>
-        <ProductContainer disable={stockItem.disable}>{stockItem.id}</ProductContainer>
+        <ProductContainer disable={!stockItem.enable}>{stockItem.id}</ProductContainer>
         <StockContainer>{stockItem.stock}</StockContainer>
         <StockContainer>{stockItem.warninglevel}</StockContainer>
         <StockContainer>{stockItem.stoplevel}</StockContainer>
