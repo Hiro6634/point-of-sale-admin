@@ -12,7 +12,7 @@ import {
     StockHdrTableContainer,
     EnableHdrContainer,
     ControlsHdrContainer,
-    NameHdrContainer,
+    ProductHdrContainer,
     StockHdrContainer
 } from './stock-view.styles';
 
@@ -22,7 +22,7 @@ const  StockView = ({stockItems, productEditHidden}) =>{
     <StockViewContainer>
         <h2>STOCK</h2>
         <StockHdrTableContainer>
-            <NameHdrContainer>Producto</NameHdrContainer>
+            <ProductHdrContainer>Producto</ProductHdrContainer>
             <StockHdrContainer>Stock</StockHdrContainer>
             <StockHdrContainer>Minimo</StockHdrContainer>
             <StockHdrContainer>Critico</StockHdrContainer>

@@ -10,24 +10,20 @@ export const StockViewContainer = styled.div`
 
 export const StockTableContainer = styled.div`
     margin: auto;
-    width: 850px;
+    width: auto;
     padding: 5px;
 `;
 
 export const StockHdrTableContainer = styled.div`
     width: 100%;
-    padding-left: 50px;
-
     display: flex;
-    flex-direction: row;
     justify-content: flex-start;
-    ${'' /* padding: 25px 20px;  */}
     font-weight: bold;
     border-bottom: 1px solid black;
 
 `;
 
-export const NameHdrContainer = styled.span`
+export const ProductHdrContainer = styled.span`
     width: 25%;
     text-align:left;
     border: 0px solid black;

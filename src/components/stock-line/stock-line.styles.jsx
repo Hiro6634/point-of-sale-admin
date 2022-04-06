@@ -8,6 +8,7 @@ const getIsEnable = props => {
 
 const textDisbleStyle = css`
     text-decoration: line-through;
+    text-decoration-thickness: 3px;  
 `;
 
 
@@ -15,8 +16,7 @@ export const StockLineContainer = styled.div`
     width:100%;
     display: flex;
     justify-content: flex-start;
-    margin: auto;
-`;
+ `;
 
 export const ProductContainer = styled.span`
     width: 25%;
