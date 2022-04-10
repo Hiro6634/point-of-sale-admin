@@ -30,14 +30,14 @@ class AddOrUpdateProduct extends React.Component {
             id: id,
             category: category,
             name: name,
-            price: price,
+            price: parseInt(price),
             enable: enable,
-            stock: stock,
-            warninglevel: warninglevel,
-            stoplevel: stoplevel,
+            stock: parseInt(stock),
+            warninglevel: parseInt(warninglevel),
+            stoplevel: parseInt(stoplevel),
             enablestop: enablestop,
             disabled: false,
-            sales: sales
+            sales: parseInt(sales)
         };
     }
 
@@ -54,13 +54,13 @@ class AddOrUpdateProduct extends React.Component {
             id: id,
             category: category, 
             name: name, 
-            price: price, 
+            price: parseInt(price), 
             enable: enable,
-            stock: stock,
-            warninglevel: warninglevel,
-            stoplevel: stoplevel,
+            stock: parseInt(stock),
+            warninglevel: parseInt(warninglevel),
+            stoplevel: parseInt(stoplevel),
             enablestop: enablestop,
-            sales: sales
+            sales: parseInt(sales)
         };
         console.log("ADD", product)
         await addOrUpdateProduct(product);
