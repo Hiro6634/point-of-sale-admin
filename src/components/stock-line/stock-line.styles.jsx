@@ -1,5 +1,15 @@
 import styled, {css} from 'styled-components';
 
+const getBackgroundColor = props => {
+    if(props.disabled){
+        return 'white';
+    }
+    if(props.isWarning ){
+        return 'Red';
+    }
+    return  props.backgroundcolor ? props.backgroundcolor :"white";
+}
+
 const getIsEnable = props => {
     if(props.disable){
         return textDisbleStyle;
@@ -16,6 +26,8 @@ export const StockLineContainer = styled.div`
     width:100%;
     display: flex;
     justify-content: flex-start;
+    ${'' /* background-color: ${getBackgroundColor}; */}
+    ${getIsEnable}
  `;
 
 export const ProductContainer = styled.span`
@@ -23,21 +35,18 @@ export const ProductContainer = styled.span`
     text-align: left;
     border: 0px solid black;
     text-transform: uppercase;
-    ${getIsEnable}
 `;
 
 export const StockContainer = styled.span`
     width: 10%;
     text-align: right;
     border: 0px solid black;
-    ${getIsEnable}
 `;
 
 export const AutostopContainer = styled.span`
     width: 15%;
     text-align: center;
     border: 0px solid black;
-    ${getIsEnable}
 `;
 export const EnableContainer = styled.div`
     display: flex;
@@ -45,7 +54,6 @@ export const EnableContainer = styled.div`
     cursor: pointer;    
     justify-content: space-around;
     border: 0px solid black;
-    ${getIsEnable}
 `;
 
 export const ControlsContainer = styled.div`

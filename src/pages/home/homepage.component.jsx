@@ -6,6 +6,7 @@ import ProductView from '../../components/product-view/product-view.component';
 import { 
     firestore,
     convertProductsSnapshotToMap,
+    rootPRODUCTS
 } from '../../firebase/firebase.utils';
 
 import { updateProducts } from '../../redux/shop/shop.actions';
@@ -31,7 +32,7 @@ class Homepage extends React.Component {
             updateProducts, 
         } = this.props;
 
-        const productsRef = firestore.collection('products');
+        const productsRef = firestore.collection(rootPRODUCTS);
 
         productsRef.onSnapshot( async snapshot =>{
             const productsMap = await convertProductsSnapshotToMap(snapshot);

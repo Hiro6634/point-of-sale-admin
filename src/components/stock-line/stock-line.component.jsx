@@ -34,11 +34,11 @@ const StockLine = ({
 }) => {
     console.log("STOCKITEM enable:",stockItem.enable);
     return(
-    <StockLineContainer>
-        <ProductContainer disable={!stockItem.enable}>{stockItem.id}</ProductContainer>
-        <StockContainer disable={!stockItem.enable}>{stockItem.stock}</StockContainer>
-        <StockContainer disable={!stockItem.enable}>{stockItem.warninglevel}</StockContainer>
-        <StockContainer disable={!stockItem.enable}>{stockItem.stoplevel}</StockContainer>
+    <StockLineContainer disable={!stockItem.enable} isWarning={stockItem.iswarning}>
+        <ProductContainer>{stockItem.id}</ProductContainer>
+        <StockContainer>{stockItem.stock}</StockContainer>
+        <StockContainer>{stockItem.warninglevel}</StockContainer>
+        <StockContainer>{stockItem.stoplevel}</StockContainer>
         <EnableContainer>
             <IconContainer isClickeable onClick={()=>{
                 console.log("TOGGLE AUTOSTOP");

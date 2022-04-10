@@ -25,7 +25,7 @@ class AddOrUpdateProduct extends React.Component {
         const warninglevel = (product && product.warninglevel) ? product.warninglevel : 0;
         const stoplevel = (product && product.stoplevel) ? product.stoplevel : 0;
         const enablestop = (product && product.enablestop) ? product.enablestop : false;
-
+        const sales = (product && product.sales) ? product.sales : 0;
         this.state = {
             id: id,
             category: category,
@@ -36,7 +36,8 @@ class AddOrUpdateProduct extends React.Component {
             warninglevel: warninglevel,
             stoplevel: stoplevel,
             enablestop: enablestop,
-            disabled: false
+            disabled: false,
+            sales: sales
         };
     }
 
@@ -47,7 +48,7 @@ class AddOrUpdateProduct extends React.Component {
     }
 
     updateProducts = async () => {
-        const {id, category, name, price, enable, stock, warninglevel, stoplevel, enablestop } = this.state;
+        const {id, category, name, price, enable, stock, warninglevel, stoplevel, enablestop,sales } = this.state;
 
         const product = { 
             id: id,
@@ -58,7 +59,8 @@ class AddOrUpdateProduct extends React.Component {
             stock: stock,
             warninglevel: warninglevel,
             stoplevel: stoplevel,
-            enablestop: enablestop
+            enablestop: enablestop,
+            sales: sales
         };
         console.log("ADD", product)
         await addOrUpdateProduct(product);
@@ -66,7 +68,7 @@ class AddOrUpdateProduct extends React.Component {
 
     render(){
         const {toggleProductEditHidden} = this.props;
-        const { category, name, price, enable, stock, warninglevel, stoplevel, enablestop } = this.state;
+        const { category, name, price, enable, stock, warninglevel, stoplevel, enablestop, sales } = this.state;
 
         return(
             <AddProductContainer>
@@ -96,6 +98,14 @@ class AddOrUpdateProduct extends React.Component {
                         value={price}
                         handleChange={this.handleChange}
                         required
+                    />
+
+                    <FormInput 
+                        name="sales"
+                        label="Ventas"
+                        type="number"
+                        value={sales}
+                        handleChange={this.handleChange}
                     />
 
                     <FormInput 

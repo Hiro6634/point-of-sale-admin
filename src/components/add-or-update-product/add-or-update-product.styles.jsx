@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const AddProductContainer = styled.div`
     position: absolute;
     width:340px;
-    height:550px;
+    height:610px;
     display: flex;
     flex-direction: column;
     padding: 20px;

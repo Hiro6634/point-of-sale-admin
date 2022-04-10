@@ -34,9 +34,22 @@ const ProductViewLine = ({
     toggleProduct
 }) => (
     <ProductViewLineContainer>
-        <CategoryContainer>{product.category.toUpperCase()}</CategoryContainer>
-        <NameContainer>{product.name.toUpperCase()}</NameContainer>
-        <PriceContainer>${product.price}</PriceContainer>
+        <CategoryContainer 
+            disable={!product.enable}
+            isWarning={product.iswarning}
+            >
+            {product.category.toUpperCase()}
+        </CategoryContainer>
+        <NameContainer 
+            disable={!product.enable}
+            isWarning={product.iswarning}>
+            {product.name.toUpperCase()}
+        </NameContainer>
+        <PriceContainer 
+            disable={!product.enable}
+            isWarning={product.iswarning}>
+            ${product.price}
+        </PriceContainer>
         <EnableContainer>
             <IconContainer onClick={()=>{
                 toggleProduct(product)

@@ -23,13 +23,17 @@ const config = {
     measurementId: "G-F0RFSFCFP6"
   };
 
+export const rootPRODUCTS = 'products_dev';
+//const rootPRINTERS = 'printers';
+export const rootUSERS = 'users';
+
 var app = firebase.initializeApp(config);
   
 
   export const createUserProfileDocument = async (userAuth, additionalData) => {
     if( !userAuth) return;
 
-        const userRef = firestore.doc(`users/${userAuth.uid}`);
+        const userRef = firestore.doc(`${rootUSERS}/${userAuth.uid}`);
         const snapShot = await userRef.get();       
         const printer = '';
 
@@ -56,7 +60,7 @@ var app = firebase.initializeApp(config);
   export const removeProduct = async product =>{
     console.log("DELETE:", product.id);
     try{
-        const docRef = firestore.collection('products').doc(product.id);
+        const docRef = firestore.collection(rootPRODUCTS).doc(product.id);
         const snapshot = await docRef.get();
         if( snapshot.exists){
             docRef.delete();
@@ -69,7 +73,7 @@ var app = firebase.initializeApp(config);
 export const addOrUpdateProduct = async (product) => {
     console.log("PRODUCT", product );
     try{
-        const docRef = firestore.collection('products').doc(product.name.toLowerCase());
+        const docRef = firestore.collection(rootPRODUCTS).doc(product.name.toLowerCase());
         const snapshot = await docRef.get();
         if(snapshot.exists){
             await docRef.update(product);
@@ -108,6 +112,7 @@ export const convertProductsSnapshotToMap = products => {
 
         return {
             id: doc.id,
+            iswarning: (stock-warninglevel)<=0,
             name,
             price,
             category,
@@ -142,7 +147,7 @@ export const convertProductsSnapshotToMap = products => {
     },{});
   }
 
-  export const updateStock = stockItems => {
+  export const resetCounters = () => {
 
   }
 

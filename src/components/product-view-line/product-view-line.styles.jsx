@@ -1,28 +1,52 @@
-import styled, {css}  from 'styled-components';
+import styled, {css} from 'styled-components';
+
+const getBackgroundColor = props => {
+
+    if( props.disable )
+        return "white";
+    if(props.isWarning ){
+        return 'Red';
+    }
+    return  props.backgroundcolor ? props.backgroundcolor :"white";
+}
+
+const getIsEnable = props => {
+    if(props.disable){
+        return textDisbleStyle;
+    }
+}
+
+const textDisbleStyle = css`
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;  
+`;
 
 export const ProductViewLineContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    ${'' /* padding: 25px 20px;  */}
+    background-color: ${getBackgroundColor}
 `;
 
 export const CategoryContainer = styled.span`
     width: 30%;
     text-align:left;
     border: 0px solid black;
+    ${getIsEnable}
 `;
 
 export const NameContainer = styled.span`
     width: 30%;
     text-align:left;
     border: 0px solid black;
+    ${getIsEnable}
 `;
 
 export const PriceContainer = styled.span`
     width: 10%;
     text-align:right;
     border: 0px solid black;
+    ${getIsEnable}
 `;
 
 export const EnableContainer = styled.div`
