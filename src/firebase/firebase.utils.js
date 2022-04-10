@@ -23,8 +23,8 @@ const config = {
     measurementId: "G-F0RFSFCFP6"
   };
 
-export const rootPRODUCTS = 'products_dev';
-//const rootPRINTERS = 'printers';
+//export const rootPRODUCTS = 'products_dev';
+export const rootPRINTERS = 'printers';
 export const rootUSERS = 'users';
 
 var app = firebase.initializeApp(config);
